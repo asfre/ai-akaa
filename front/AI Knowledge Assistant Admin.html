@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>AI Knowledge Assistant Admin</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="ai-knowledge-assistant-admin">AI Knowledge Assistant Admin</h1>
+<p><img src="file:///d:\process\ai-akaa\front\%E5%B0%81%E9%9D%A2%E5%9B%BE%E8%B7%AF%E5%BE%84" alt="项目封面图（可选）"></p>
+<h1 id="-项目简介">📌 项目简介</h1>
+<p>本项目旨在构建一个基于 Vue2 和 Element UI 的轻量级后台管理系统，其核心功能类似于“小型 ChatGPT 管理面板”。用户可以在前端界面中输入问题，并获取由 AI 提供的答案。此外，系统支持查看历史提问记录、统计问答数据等功能。</p>
+<p>该项目不仅满足当前开发学习的需求，也为未来扩展至企业级应用打下坚实的基础。</p>
+<h1 id="-项目目标">🎯 项目目标</h1>
+<h2 id="当前阶段目标">当前阶段目标</h2>
+<ul>
+<li>
+<p><s>实现基本的聊天交互界面，包括消息发送与接收；</s></p>
+</li>
+<li>
+<p><s>使用 Mock.js 模拟后端接口行为；</s></p>
+</li>
+<li>
+<p><s>构建清晰的状态管理体系（Vuex）用于维护会话及统计数据；</s></p>
+</li>
+<li>
+<p><s>初步集成图表展示能力（ECharts），呈现简单的分析结果；</s></p>
+</li>
+</ul>
+<h2 id="中长期发展愿景">中长期发展愿景</h2>
+<ul>
+<li>
+<p><s>接入真实的 AI 大模型 API，实现智能化服务；</s></p>
+</li>
+<li>
+<p>~~引入数据库存储机制（如 IndexedDB 或远程服务器），持久化用户的对话记录；~~本地存储 sql 数据库</p>
+</li>
+<li>
+<p><s>支持多角色权限控制体系；</s></p>
+</li>
+<li>
+<p>迁移到 Vue3 + TypeScript 技术栈，提升代码质量和可维护性；</p>
+</li>
+<li>
+<p>增强系统的安全性、稳定性和响应速度；</p>
+</li>
+<li>
+<p>扩展更多数据分析维度，增强可视化效果；</p>
+</li>
+</ul>
+<h1 id="-功能规划">💡 功能规划</h1>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>登录认证</td>
+<td>简单的身份验证流程，通过 Token 控制访问权限</td>
+</tr>
+<tr>
+<td>聊天主页面</td>
+<td>显示历史聊天记录，允许用户发起新提问</td>
+</tr>
+<tr>
+<td>对话管理</td>
+<td>支持连续上下文的理解与处理</td>
+</tr>
+<tr>
+<td>统计报表</td>
+<td>展示每日提问数量、热门话题排行等关键指标</td>
+</tr>
+<tr>
+<td>设置中心</td>
+<td>用户个性化配置入口</td>
+</tr>
+<tr>
+<td>权限系统</td>
+<td>不同级别的账户拥有不同的操作权限</td>
+</tr>
+</tbody>
+</table>
+<h1 id="-技术选型概览">🧱 技术选型概览</h1>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>技术栈</th>
+<th>版本要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核心框架</td>
+<td>Vue</td>
+<td>^2.6.x</td>
+</tr>
+<tr>
+<td>UI 库</td>
+<td>Element UI</td>
+<td>^2.15.x</td>
+</tr>
+<tr>
+<td>路由管理</td>
+<td>Vue Router</td>
+<td>^3.5.x</td>
+</tr>
+<tr>
+<td>全局状态管理</td>
+<td>Vuex</td>
+<td>^3.6.x</td>
+</tr>
+<tr>
+<td>HTTP 客户端</td>
+<td>Axios</td>
+<td>^0.27.x</td>
+</tr>
+<tr>
+<td>模拟服务</td>
+<td>Mock.js</td>
+<td>^1.1.x</td>
+</tr>
+<tr>
+<td>图表渲染</td>
+<td>ECharts</td>
+<td>^5.4.x</td>
+</tr>
+<tr>
+<td>包管理工具</td>
+<td>npm/yarn</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p><em>注：以上为初期版本的技术栈，在后续迁移过程中将逐步升级至 Vue3 及相关生态组件。</em></p>
+<h1 id="️-目录结构说明">🗂️ 目录结构说明</h1>
+<pre><code class="language-bash">
+ai-knowledge-admin/
+├── public/                 <span class="hljs-comment"># 静态资源目录</span>
+├── src/
+│   ├── api/                <span class="hljs-comment"># 接口请求封装</span>
+│   ├── assets/             <span class="hljs-comment"># 图片、字体等静态资源</span>
+│   ├── components/         <span class="hljs-comment"># 可复用公共组件</span>
+│   ├── mock/               <span class="hljs-comment"># 模拟数据定义</span>
+│   ├── pages/              <span class="hljs-comment"># 页面级组件</span>
+│   ├── router/             <span class="hljs-comment"># 路由配置</span>
+│   ├── store/              <span class="hljs-comment"># Vuex 状态树</span>
+│   ├── utils/              <span class="hljs-comment"># 工具函数集合</span>
+│   ├── App.vue             <span class="hljs-comment"># 根组件</span>
+│   └── main.js             <span class="hljs-comment"># 入口文件</span>
+├── .browserslistrc         <span class="hljs-comment"># 浏览器兼容范围设定</span>
+├── .eslintrc.js            <span class="hljs-comment"># ESLint 规则配置</span>
+├── babel.config.js         <span class="hljs-comment"># Babel 编译规则</span>
+├── package.json            <span class="hljs-comment"># NPM 包信息</span>
+└── README.md               <span class="hljs-comment"># 项目介绍文档</span>
+</code></pre>
+<h1 id="-开发环境搭建指南">🔧 开发环境搭建指南</h1>
+<h2 id="初始化项目">初始化项目</h2>
+<pre><code class="language-bash">
+vue create ai-knowledge-admin
+</code></pre>
+<h2 id="安装必要依赖">安装必要依赖</h2>
+<pre><code class="language-bash">
+<span class="hljs-built_in">cd</span> ai-knowledge-admin
+npm install element-ui axios mockjs echarts vuex@3 vue-router@3
+</code></pre>
+<h2 id="启动本地开发服务器">启动本地开发服务器</h2>
+<pre><code class="language-bash">
+npm run serve
+</code></pre>
+<h2 id="构建生产环境包">构建生产环境包</h2>
+<pre><code class="language-bash">
+npm run build
+</code></pre>
+<h1 id="-发展路线图">📈 发展路线图</h1>
+<table>
+<thead>
+<tr>
+<th>时间节点</th>
+<th>主要任务</th>
+<th>成果产出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase I</td>
+<td>完善基础架构、完成核心页面开发</td>
+<td>可运行的基本聊天界面</td>
+</tr>
+<tr>
+<td>Phase II</td>
+<td>集成 Mock 接口、引入状态管理和图表组件</td>
+<td>具备交互性的演示 Demo</td>
+</tr>
+<tr>
+<td>Phase III</td>
+<td>替换为真实 AI 接口、优化用户体验</td>
+<td>更贴近实际应用场景的产品原型</td>
+</tr>
+<tr>
+<td>Phase IV</td>
+<td>添加高级特性（搜索、导出、设置项）、准备部署上线</td>
+<td>可交付的企业内部使用平台</td>
+</tr>
+<tr>
+<td>Phase V</td>
+<td>升级至 Vue3+TypeScript 架构、重构部分模块</td>
+<td>新一代现代化 Web 应用解决方案</td>
+</tr>
+</tbody>
+</table>
+<h1 id="-社区协作建议">🤝 社区协作建议</h1>
+<p>欢迎各位开发者参与贡献！你可以通过以下方式加入我们：</p>
+<ul>
+<li>
+<p>提交 Issue 讨论改进点或报告 Bug；</p>
+</li>
+<li>
+<p>Fork 并提交 Pull Request；</p>
+</li>
+<li>
+<p>在线讨论交流技术细节；</p>
+</li>
+<li>
+<p>分享使用经验与最佳实践案例；</p>
+</li>
+</ul>
+<p>让我们一起打造一个高效实用的知识助手平台！</p>
+<h1 id="-备注">📝 备注</h1>
+<ol>
+<li>
+<p>若需自定义配置（如端口、环境变量等），可修改项目根目录下的 <code>vue.config.js</code> 文件（需自行创建）；</p>
+</li>
+<li>
+<p>开发过程中若遇到 ESLint 语法校验问题，可根据需求调整 <code>.eslintrc.js</code> 中的规则；</p>
+</li>
+<li>
+<p>建议使用 VS Code 配合 Vetur、ESLint 等插件提升开发效率。</p>
+<blockquote>
+<p>（注：文档部分内容可能由 AI 生成）</p>
+</blockquote>
+</li>
+</ol>
+
+            
+            
+        </body>
+        </html>
